@@ -25,7 +25,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         prog="apt-node-exporter",
-        description="Export metrics about APT packages as node-exporter textfile",
+        description="Export metrics about APT packages in format compatible with Prometheus node-exporter textfile collector",
     )
     parser.add_argument(
         "-o",
@@ -40,7 +40,7 @@ def main():
         "-p",
         "--packages",
         dest="packages",
-        help="PACKAGES to report metrics for",
+        help="APT packages to monitor",
         metavar="PACKAGES",
         type=str,
         nargs="+",
