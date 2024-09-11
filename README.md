@@ -2,8 +2,9 @@
 
 Generates Prometheus metrics to a textfile (compatible with node-exporter textfile collector) about APT packages
 
-It generate a metric called `apt_package_info` per APT packages to be monitored.
+It generate a metric called `apt_package_info` per APT packages that are configured to be monitored (via `--list` param).
 Metric contains name and version of the package as labels.
+Metrics are reported to stdout or textfile specified by `--output` param.
 
 ## Usage
 
