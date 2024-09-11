@@ -15,3 +15,19 @@ $ python apt-node-exporter.py --output - --packages zstd libqmi-glib5
 apt_package_info{name="zstd",version="1.4.8+dfsg-3build1"} 1.0
 apt_package_info{name="libqmi-glib5",version="1.32.0-1ubuntu0.22.04.1"} 1.0
 ```
+
+## Installation
+
+This Python script requires `python3-apt` Debian package to be installed.
+Once installed you can create a virtualenv that will have access to this system package via
+
+```shell
+virtualenv --system-site-packages venv
+```
+
+Then you can activate your virtualenv and install missing packages with `pip`
+
+```shell
+. ./venv/bin/activate
+pip install -r requirements.txt
+```
