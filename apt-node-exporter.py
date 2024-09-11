@@ -2,7 +2,7 @@ import argparse
 import apt  # require installation of `python3-apt` package on the system
 import logging
 import sys
-from prometheus_client import CollectorRegistry, Gauge, write_to_textfile
+from prometheus_client import CollectorRegistry, Gauge, generate_latest
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -34,7 +34,7 @@ def main():
         help="Write metrics to FILE",
         metavar="FILE",
         type=argparse.FileType("w"),
-        required=True,
+        default='-',
     )
     parser.add_argument(
         "-p",
@@ -60,7 +60,7 @@ def main():
         register_gauge(gauge, pkg)
 
     logging.debug("Exporting metrics to textfile %s", args.filename.name)
-    write_to_textfile(args.filename.name, registry)
+    args.filename.write(generate_latest(registry).decode('utf-8'))
 
 
 if __name__ == "__main__":
