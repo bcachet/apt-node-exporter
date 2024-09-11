@@ -4,3 +4,17 @@ Generates Prometheus metrics to a textfile (compatible with node-exporter textfi
 
 It generate a metric called `apt_package_info` per APT packages to be monitored.
 Metric contains name and version of the package as labels.
+
+## Usage
+
+```
+python apt-node-exporter.py --output data.prom --packages zstd libqmi-glib5
+```
+
+Here is content of generated textfile
+```
+# HELP apt_package_info Metric labeled with name/version of APT package. Value is always '1'
+# TYPE apt_package_info gauge
+apt_package_info{name="zstd",version="1.4.8+dfsg-3build1"} 1.0
+apt_package_info{name="libqmi-glib5",version="1.32.0-1ubuntu0.22.04.1"} 1.0
+```
